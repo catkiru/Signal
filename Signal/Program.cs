@@ -3,7 +3,7 @@ using MathNet.Numerics.Statistics;
 using NAudio.Wave;
 using System.Numerics;
 
-const string wavFilePath = "../data/input.wav";
+const string wavFilePath = "../../../../data/input.wav";
 const double fLow = 400;       // нижняя граница частотного диапазона
 const double fHigh = 3000;     // верхняя граница частотного диапазона
 const double windowDuration = 0.05;  // секунд
@@ -99,6 +99,7 @@ Console.WriteLine($"Количество окон: {numWindows}, количес�
 Console.WriteLine("Вектор столбцов (1 — устойчивый сигнал):");
 Console.WriteLine(string.Join("", binaryColumnsVector.Select(v => v.ToString())));
 Console.WriteLine("Матрица 0/1 (каждая строка — окно):");
+var to = File.CreateText("out.txt");
 for (int w = 0; w < numWindows; w++)
 {
     var row = new char[numBins];
@@ -107,6 +108,7 @@ for (int w = 0; w < numWindows; w++)
         row[j] = binaryMatrix[w, j] == 1 ? '1' : '0';
     }
     Console.WriteLine(new string(row));
+    to.WriteLine(new string(row));
 }
 
 static (int SampleRate, double[] Samples) LoadWav(string path)
