@@ -8,8 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Accord.Math" Version="3.8.2-alpha" />
         <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
         <PackageReference Include="NAudio" Version="2.2.1" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="2.1.10" />
     </ItemGroup>
 
 </Project>
